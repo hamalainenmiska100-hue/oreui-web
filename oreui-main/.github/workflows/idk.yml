@@ -1,0 +1,51 @@
+name: Flatten dist (collision safe)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clean repo
+        run: |
+          shopt -s extglob
+          rm -rf !(ore-ui-core.zip|.github)
+
+      - name: Unzip
+        run: unzip -o ore-ui-core.zip -d extracted
+
+      - name: Flatten dist safely
+        run: |
+          find extracted -type f -path "*/dist/*" | while read file; do
+            rel="${file#*dist/}"
+            safe=$(echo "$rel" | tr '/' '_')
+            cp "$file" "$safe"
+          done
+
+      - name: Create README
+        run: |
+          echo "# oreui" > README.md
+          echo "" >> README.md
+          echo "Flattened CDN distribution of Ore UI assets." >> README.md
+          echo "" >> README.md
+          echo "Base CDN:" >> README.md
+          echo "https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui@main/" >> README.md
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add .
+          git commit -m "Flatten dist (collision safe)" || echo "No changes"
+          git push
