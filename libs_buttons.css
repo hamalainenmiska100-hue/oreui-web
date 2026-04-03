@@ -1,10 +1,13 @@
-button {
+button,
+.ore-ui-btn {
 	cursor: pointer;
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 }
-button.cube {
+
+button.cube,
+.ore-ui-btn.ore-ui-btn-cube {
 	font-size: 20px;
 	margin-top: 2px;
 	cursor: auto;
@@ -16,29 +19,41 @@ button.cube {
 	background-color: unset;
 	border: none;
 }
-button.cube:is(:hover, :focus) {
+
+button.cube:is(:hover, :focus),
+.ore-ui-btn.ore-ui-btn-cube:is(:hover, :focus) {
 	background-color: #48494a;
 	box-shadow: 0 -1px 0 0 #464647, inset 0 1px 0 0 #5a5b5c;
 }
-button.icon {
+
+button.icon,
+.ore-ui-btn.ore-ui-btn-icon {
 	background-color: unset;
 	border: none;
 	width: 45px;
 	height: 100%;
 }
-button.icon:not(header>button) {
+
+button.icon:not(header>button),
+.ore-ui-btn.ore-ui-btn-icon:not(header>.ore-ui-btn) {
 	width: 32px;
 	height: 32px;
 }
-button.icon:is(:hover, :focus) {
+
+button.icon:is(:hover, :focus),
+.ore-ui-btn.ore-ui-btn-icon:is(:hover, :focus) {
 	background-color: #f6f6f6;
 	cursor: pointer;
 }
-button.icon:not(header>button):is(:hover, :focus) {
+
+button.icon:not(header>button):is(:hover, :focus),
+.ore-ui-btn.ore-ui-btn-icon:not(header>.ore-ui-btn):is(:hover, :focus) {
 	background-color: unset;
 	opacity: 0.6;
 }
-button.normal {
+
+button.normal,
+.ore-ui-btn {
 	width: 240px;
 	height: 40px;
 	font-size: 20px;
@@ -48,82 +63,118 @@ button.normal {
 	margin-bottom: 6px;
 	margin-left: 6px;
 }
-button.normal.disabled {
+
+button.normal.disabled,
+button.normal:disabled,
+.ore-ui-btn-disabled,
+.ore-ui-btn:disabled {
 	color: #484848;
 	background-color: #d0d1d4;
 	border: 2px solid #8c8d90;
 	box-shadow: inset 0 -4px #b2b2b2;
 	pointer-events: none;
 }
-button.normal.link::before {
+
+button.normal.link::before,
+.ore-ui-btn.ore-ui-btn-link::before {
 	margin-left: 2px;
 	content: url(../res/external-link-b22bb.png);
 	width: 10px;
 	height: 10px;
 }
-button.normal:is(:hover, :focus) {
+
+button.normal:is(:hover, :focus),
+.ore-ui-btn:is(:hover, :focus) {
 	background-color: #b2b2b2;
 	box-shadow: inset 0 -4px #585858, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal:active {
+
+button.normal:active,
+.ore-ui-btn:active {
 	margin-top: 4px;
 	height: 36px;
 	padding-bottom: 2px;
 	box-shadow: inset 3px 3px #fffc, inset -3px -3px #fff3;
 }
-button.normal.blue {
+
+button.normal.blue,
+.ore-ui-btn-primary {
 	color: #fff;
 	background-color: #7345e5;
 	box-shadow: inset 0 -4px #4a1cac, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.blue:is(:hover, :focus) {
+
+button.normal.blue:is(:hover, :focus),
+.ore-ui-btn-primary:is(:hover, :focus) {
 	background-color: #5d2cc6;
 	box-shadow: inset 0 -4px #4a1cac, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.dark {
+
+button.normal.dark,
+.ore-ui-btn-dark {
 	color: #fff;
 	background-color: #242222;
 	box-shadow: inset 0 -4px #000, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.dark.link::before {
+
+button.normal.dark.link::before,
+.ore-ui-btn-dark.ore-ui-btn-link::before {
 	margin-left: 2px;
 	content: url(../res/externalLink-0e493.png);
 	width: 10px;
 	height: 10px;
 }
-button.normal.dark:is(:hover, :focus) {
+
+button.normal.dark:is(:hover, :focus),
+.ore-ui-btn-dark:is(:hover, :focus) {
 	background-color: #3c3c3c;
 	box-shadow: inset 0 -4px #242222, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.green {
+
+button.normal.green,
+.ore-ui-btn-success {
 	background-color: #3c8527;
 	box-shadow: inset 0 -4px #1d4d13, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.green:is(:hover, :focus) {
+
+button.normal.green:is(:hover, :focus),
+.ore-ui-btn-success:is(:hover, :focus) {
 	background-color: #2a641c;
 	box-shadow: inset 0 -4px #1d4d13, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.red {
+
+button.normal.red,
+.ore-ui-btn-danger {
 	background-color: #c63636;
 	box-shadow: inset 0 -4px #585858, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.red:is(:hover, :focus) {
+
+button.normal.red:is(:hover, :focus),
+.ore-ui-btn-danger:is(:hover, :focus) {
 	background-color: #1d4d14;
 	box-shadow: inset 0 -4px #ad1d1d, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.skyblue {
+
+button.normal.skyblue,
+.ore-ui-btn-info {
 	background-color: #00bfff;
 	box-shadow: inset 0 -4px #06abe2, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.skyblue:is(:hover, :focus) {
+
+button.normal.skyblue:is(:hover, :focus),
+.ore-ui-btn-info:is(:hover, :focus) {
 	background-color: #57d5ff;
 	box-shadow: inset 0 -4px #1fa5d1, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.yellow {
+
+button.normal.yellow,
+.ore-ui-btn-warning {
 	background-color: #dada10;
 	box-shadow: inset 0 -4px #a8a845, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }
-button.normal.yellow:is(:hover, :focus) {
+
+button.normal.yellow:is(:hover, :focus),
+.ore-ui-btn-warning:is(:hover, :focus) {
 	background-color: #a0a014;
 	box-shadow: inset 0 -4px #8b8b32, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }

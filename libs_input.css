@@ -1,4 +1,7 @@
-div[contenteditable], input, textarea {
+div[contenteditable],
+input,
+textarea,
+.ore-ui-input {
 	padding-top: 14px;
 	padding-left: 10px;
 	width: auto;
@@ -12,25 +15,95 @@ div[contenteditable], input, textarea {
 	outline: none;
 }
 
+.ore-ui-input-wrapper {
+	display: inline-block;
+}
+
 div[contenteditable] {
 	padding-right: 10px;
 	height: auto;
 }
 
-div[contenteditable], textarea {
+div[contenteditable],
+textarea,
+.ore-ui-input.ore-ui-input-multiline {
 	padding-bottom: 6px;
 }
 
-textarea {
+textarea,
+.ore-ui-input.ore-ui-input-multiline {
 	width: 100%;
 	height: auto;
 	min-height: 120px;
 	resize: none;
 }
-textarea::-webkit-scrollbar-track {
+
+textarea::-webkit-scrollbar-track,
+.ore-ui-input.ore-ui-input-multiline::-webkit-scrollbar-track {
 	border-color: #313233;
 }
 
 input[type="radio"] {
 /* 下次再更( */
+}
+
+.ore-ui-switch {
+	position: relative;
+	display: inline-block;
+	width: 54px;
+	height: 28px;
+}
+
+.ore-ui-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.ore-ui-switch-slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #313233;
+	border: 2px solid #000;
+	box-shadow: inset 0 5px 0 0 #242425;
+	transition: 0.2s;
+}
+
+.ore-ui-switch-slider::before {
+	position: absolute;
+	content: "";
+	height: 20px;
+	width: 20px;
+	left: 3px;
+	top: 2px;
+	background-color: #d0d1d4;
+	border: 2px solid #1e1e1f;
+	box-shadow: inset 0 -2px #58585a, inset 1px 1px #fff3;
+	transition: 0.2s;
+}
+
+.ore-ui-switch input:checked + .ore-ui-switch-slider::before {
+	transform: translateX(24px);
+}
+
+.ore-ui-progress {
+	display: block;
+	width: 100%;
+	height: 24px;
+	background-color: #313233;
+	border: 2px solid #000;
+	box-shadow: inset 0 5px 0 0 #242425;
+	overflow: hidden;
+}
+
+.ore-ui-progress-bar {
+	display: block;
+	height: 100%;
+	width: 0;
+	background-color: #3c8527;
+	box-shadow: inset 0 -4px #1d4d13, inset 3px 3px #fff3, inset -3px -7px #ffffff1a;
 }

@@ -1,250 +1,205 @@
-# oreui-web
+# Ore UI Web
 
-CDN distribution of Ore UI Web.
-
----
-
-## Base CDN
-
-All files must be loaded from:
-
-https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui-web@main/
+Ore UI Web is a lightweight vanilla CSS/JS UI library with a pixel-inspired visual style.  
+This refactor introduces a consistent `ore-ui-` component naming system while preserving all legacy class behavior for backward compatibility.
 
 ---
 
-## Critical rule
+## 1) Introduction
 
-Never use local paths like:
+This library now supports two class APIs:
 
-./dist/...
-./assets/...
+- **Legacy classes** (existing projects keep working)
+- **New unified classes** prefixed with `ore-ui-`
 
-Always use CDN URLs.
-
----
-
-## Core CSS
-
-dist/preload.css  
-Initial styles. Must be loaded first to avoid layout issues.
-
-dist/libs/main.css  
-Main UI styling system.
-
-dist/libs/buttons.css  
-Button styles.
-
-dist/libs/input.css  
-Input and form styles.
-
-dist/libs/icons.css  
-Icon system.
-
-dist/libs/fonts.css  
-Font loader definitions.
-
-dist/libs/images.css  
-Image-related styles.
+The visual output, spacing, colors, and interactive behavior remain unchanged for existing components.
 
 ---
 
-## JavaScript
+## 2) Installation (CDN usage)
 
-dist/lite.init.js  
-Main initializer. Only recommended entry point.
+Use the jsDelivr CDN path:
 
-dist/libs/main.js  
-Core UI logic (optional).
-
-dist/libs/info.js  
-Information utilities (optional).
-
-dist/libs/sounds.js  
-Sound handling logic.
-
----
-
-## NOT recommended
-
-dist/all.init.js  
-Heavy bundle. May cause infinite loading.
-
-dist/all.init.css  
-Full CSS bundle. Not needed in most cases.
-
----
-
-## Fonts
-
-All fonts are auto-loaded via fonts.css.
-
-Examples:
-
-dist/fonts/Minecraft-Five-48bb3.otf  
-Minecraft-style font.
-
-dist/fonts/Minecraft-Five-Bold-4ded8.otf  
-Bold variant.
-
-dist/fonts/Minecraft-Seven-66398.otf  
-Alternative pixel font.
-
-dist/fonts/Minecraft-Ten-ed29a.otf  
-Extended pixel font.
-
-dist/fonts/NotoSans-Bold-14d47.ttf  
-Standard bold UI font.
-
-dist/fonts/NotoSans-Italic-11442.ttf  
-Italic font.
-
-dist/fonts/NotoSansArabic-Regular-9137a.ttf  
-Arabic support.
-
-dist/fonts/NotoSansJP-Regular-aaed5.otf  
-Japanese support.
-
-dist/fonts/NotoSansKR-Regular-8625b.otf  
-Korean support.
-
-dist/fonts/NotoSansSC-Regular-a4317.otf  
-Simplified Chinese.
-
-dist/fonts/NotoSansTC-Regular-2eeaf.otf  
-Traditional Chinese.
-
-dist/fonts/NotoSansTamilSupplement-Regular-a407d.ttf  
-Tamil support.
-
-dist/fonts/NotoSansMongolian-Regular-f4200.ttf  
-Mongolian support.
-
-dist/fonts/NotoSansSyriac-Regular-1bff6.ttf  
-Syriac support.
-
-dist/fonts/NotoSansMerged-Regular-5df70.ttf  
-Merged fallback font.
-
----
-
-## Legacy (optional)
-
-dist/legacy/mc-fonts.css  
-Old Minecraft font system.
-
-dist/legacy/notosans.css  
-Legacy font config.
-
-dist/legacy/fonts/Mojangles.ttf  
-Legacy Minecraft font.
-
-dist/legacy/fonts/minecraft-ten.ttf  
-Legacy variant.
-
----
-
-## Resources (images)
-
-dist/res/Clipboard-bbbc0.png  
-Clipboard icon.
-
-dist/res/Copy-9b6af.png  
-Copy icon.
-
-dist/res/Save-72f24.png  
-Save icon.
-
-dist/res/animation-074ed.gif  
-Loading animation.
-
-dist/res/empty-state-art-461d2.png  
-Empty UI illustration.
-
-dist/res/emptyStatesNoProgress-02663.png  
-Empty state variant.
-
-dist/res/error-1ee9c.png  
-Error illustration.
-
-dist/res/external-link-b22bb.png  
-External link icon.
-
-dist/res/externalLink-0e493.png  
-Alternate icon.
-
-dist/res/help.png  
-Help icon.
-
-dist/res/menu.png  
-Menu icon.
-
----
-
-## Sounds
-
-dist/sounds/modal_hide-2341f.ogg  
-UI hide sound.
-
-dist/sounds/release-7c974.ogg  
-Release interaction sound.
-
-dist/sounds/snes_pop-7a6d3.ogg  
-Pop sound effect.
-
----
-
-## Config
-
-dist/oreuicfg.json  
-Internal configuration file.
-
----
-
-## Example usage
-
+```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui-web@main/dist/preload.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui-web@main/dist/libs/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui-web@main/dist/libs/buttons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui-web@main/dist/libs/input.css">
 
 <script type="module" src="https://cdn.jsdelivr.net/gh/hamalainenmiska100-hue/oreui-web@main/dist/lite.init.js"></script>
+```
+
+Recommended stylesheet order:
+1. `preload.css`
+2. `main.css`
+3. `buttons.css`
+4. `input.css`
+5. optional `icons.css`, `images.css`, etc.
 
 ---
 
-## Loader fix
+## 3) Component list
 
-<script>
-window.addEventListener("load", () => {
-  const loader = document.querySelector("loader")
-  if (loader) loader.style.display = "none"
-})
-</script>
-
----
-
-## What this is
-
-Ore UI Web is:
-
-- a CSS design system
-- UI component library
-
-It is NOT a full JavaScript framework.
+- Buttons
+- Inputs
+- Cards
+- Switches
+- Progress bars
+- Icons
+- Utility helpers (`ore-ui-banner`, `ore-ui-center`, `ore-ui-flex`, `ore-ui-disabled`)
 
 ---
 
-## AI instructions
+## 4) Usage examples
 
-- Always use CDN URLs
-- Never use ./dist paths
-- Always include preload.css first
-- Always use lite.init.js
-- Avoid all.init.js
-- Treat this as a CSS system
+### Buttons
+
+#### Example
+
+```html
+<button class="ore-ui-btn">Default</button>
+<button class="ore-ui-btn ore-ui-btn-primary">Primary</button>
+<button class="ore-ui-btn ore-ui-btn-success">Success</button>
+<button class="ore-ui-btn ore-ui-btn-danger">Danger</button>
+<button class="ore-ui-btn ore-ui-btn-disabled" disabled>Disabled</button>
+```
+
+#### Classes
+
+- `ore-ui-btn`: Base button style (legacy alias: `button.normal`)
+- `ore-ui-btn-primary`: Primary variant (legacy alias: `.blue`)
+- `ore-ui-btn-success`: Success variant (legacy alias: `.green`)
+- `ore-ui-btn-danger`: Danger variant (legacy alias: `.red`)
+- `ore-ui-btn-disabled`: Disabled state (legacy alias: `.disabled` on normal button)
+
+#### Additional variants
+
+- `ore-ui-btn-dark` (legacy alias: `.dark`)
+- `ore-ui-btn-info` (legacy alias: `.skyblue`)
+- `ore-ui-btn-warning` (legacy alias: `.yellow`)
+- `ore-ui-btn-link` (legacy alias: `.link`)
+- `ore-ui-btn-icon` (legacy alias: `.icon`)
+- `ore-ui-btn-cube` (legacy alias: `.cube`)
 
 ---
 
-## Summary
+### Inputs
 
-- CDN only
-- preload.css first
-- lite.init.js only
-- no local paths
+#### Example
+
+```html
+<div class="ore-ui-input-wrapper">
+  <input class="ore-ui-input" type="text" placeholder="Type here">
+</div>
+
+<textarea class="ore-ui-input ore-ui-input-multiline"></textarea>
+```
+
+#### Classes
+
+- `ore-ui-input`: Base input appearance (aliases existing `input`, `textarea`, and contenteditable styles)
+- `ore-ui-input-wrapper`: Optional wrapper utility for layout grouping
+- `ore-ui-input-multiline`: Multiline treatment for textareas
+
+---
+
+### Cards
+
+#### Example
+
+```html
+<div class="ore-ui-card">
+  <div class="ore-ui-card-header">Card Header</div>
+  <div class="ore-ui-card-body">Card content</div>
+  <div class="ore-ui-card-footer">Card footer</div>
+</div>
+```
+
+#### Classes
+
+- `ore-ui-card`: Base card container (legacy alias: `.box`)
+- `ore-ui-card-header`: Header region
+- `ore-ui-card-body`: Body region
+- `ore-ui-card-footer`: Footer region
+
+---
+
+### Switches
+
+#### Example
+
+```html
+<label class="ore-ui-switch">
+  <input type="checkbox">
+  <span class="ore-ui-switch-slider"></span>
+</label>
+```
+
+#### Classes
+
+- `ore-ui-switch`: Switch wrapper
+- `ore-ui-switch-slider`: Track + knob visual element
+
+---
+
+### Progress bars
+
+#### Example
+
+```html
+<div class="ore-ui-progress">
+  <span class="ore-ui-progress-bar" style="width: 60%;"></span>
+</div>
+```
+
+#### Classes
+
+- `ore-ui-progress`: Progress track container
+- `ore-ui-progress-bar`: Fill element controlled by width
+
+---
+
+### Icons (existing)
+
+#### Example
+
+```html
+<span class="-icon -menu"></span>
+<span class="-icon -help"></span>
+<span class="-icon -save"></span>
+```
+
+#### Available icon modifiers
+
+- `-loading`, `-copy`, `-clip`, `-extlink`, `-help`, `-menu`, `-save`
+
+---
+
+## 5) Naming conventions
+
+The new naming format follows simple BEM-like patterns:
+
+- **Block/base:** `ore-ui-btn`, `ore-ui-card`, `ore-ui-input`
+- **Variant/modifier:** `ore-ui-btn-primary`, `ore-ui-btn-danger`
+- **Elements:** `ore-ui-card-header`, `ore-ui-card-body`, `ore-ui-card-footer`
+
+Guidelines:
+- Prefix all public component classes with `ore-ui-`
+- Keep modifiers descriptive and short
+- Preserve legacy class aliases for migration safety
+
+---
+
+## 6) Design philosophy
+
+- **No visual regressions:** Existing components preserve the same style and behavior.
+- **Backward compatible:** Legacy class names still function.
+- **Predictable structure:** Components have clearer DOM patterns.
+- **Vanilla-first:** No framework dependency added.
+- **Progressive migration:** You can migrate class names gradually.
+
+---
+
+## Demo
+
+A complete component showcase is available in `index.html` at repo root, including old and new class usage side by side.
