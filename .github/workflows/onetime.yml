@@ -1,0 +1,48 @@
+name: Extract core.zip (self-destruct)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clean repo (keep zip + workflow)
+        run: |
+          shopt -s extglob
+          rm -rf !(core.zip|.github)
+
+      - name: Extract zip
+        run: unzip -o core.zip -d extracted
+
+      - name: Move extracted files to root
+        run: |
+          shopt -s dotglob
+          mv extracted/* .
+
+      - name: Remove extracted folder
+        run: rm -rf extracted
+
+      - name: Remove zip
+        run: rm -f core.zip
+
+      - name: Remove workflow (self destruct)
+        run: rm -rf .github
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add .
+          git commit -m "Deploy core.zip and self-destruct workflow" || echo "No changes"
+          git push
