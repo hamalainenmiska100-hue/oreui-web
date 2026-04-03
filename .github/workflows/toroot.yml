@@ -1,0 +1,54 @@
+name: Extract core.zip (force root)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clean repo (keep zip + workflow)
+        run: |
+          shopt -s extglob
+          rm -rf !(core.zip|.github)
+
+      - name: Extract zip
+        run: unzip -o core.zip -d extracted
+
+      - name: Move contents to root (auto-detect inner folder)
+        run: |
+          shopt -s dotglob
+
+          # find first real directory inside extracted
+          inner=$(find extracted -mindepth 1 -maxdepth 1 -type d | head -n 1)
+
+          # if exists → use it
+          if [ -d "$inner" ]; then
+            mv "$inner"/* .
+          else
+            mv extracted/* .
+          fi
+
+      - name: Cleanup
+        run: |
+          rm -rf extracted
+          rm -f core.zip
+          rm -rf .github
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add .
+          git commit -m "Deploy core.zip to root (fixed)" || echo "No changes"
+          git push
