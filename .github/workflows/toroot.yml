@@ -1,4 +1,4 @@
-name: Extract core.zip (force root)
+name: Move oreui-main to root
 
 on:
   push:
@@ -16,32 +16,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Clean repo (keep zip + workflow)
+      - name: Clean repo (keep folder + workflow)
         run: |
           shopt -s extglob
-          rm -rf !(core.zip|.github)
+          rm -rf !(oreui-main|.github)
 
-      - name: Extract zip
-        run: unzip -o core.zip -d extracted
-
-      - name: Move contents to root (auto-detect inner folder)
+      - name: Move oreui-main contents to root
         run: |
           shopt -s dotglob
-
-          # find first real directory inside extracted
-          inner=$(find extracted -mindepth 1 -maxdepth 1 -type d | head -n 1)
-
-          # if exists → use it
-          if [ -d "$inner" ]; then
-            mv "$inner"/* .
-          else
-            mv extracted/* .
-          fi
+          mv oreui-main/* .
 
       - name: Cleanup
         run: |
-          rm -rf extracted
-          rm -f core.zip
+          rm -rf oreui-main
           rm -rf .github
 
       - name: Commit & push
@@ -50,5 +37,5 @@ jobs:
           git config user.email "actions@github.com"
 
           git add .
-          git commit -m "Deploy core.zip to root (fixed)" || echo "No changes"
+          git commit -m "Move oreui-main to root + self-destruct" || echo "No changes"
           git push
