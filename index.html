@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ore UI Component Demo</title>
+  <link rel="stylesheet" href="./preload.css">
+  <link rel="stylesheet" href="./libs_main.css">
+  <link rel="stylesheet" href="./libs_buttons.css">
+  <link rel="stylesheet" href="./libs_input.css">
+  <link rel="stylesheet" href="./libs_icons.css">
+  <style>
+    body {
+      overflow: auto;
+      padding: 12px;
+    }
+
+    main {
+      position: static;
+      height: auto;
+      margin: 0;
+      width: auto;
+      overflow: visible;
+    }
+
+    .demo-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .demo-card {
+      background: #3a3b3d;
+    }
+
+    .demo-spacer {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="title">Ore UI Component System Demo</h1>
+    <p>Legacy classes and <code>ore-ui-*</code> classes both work.</p>
+
+    <div class="demo-grid">
+      <section class="ore-ui-card demo-card">
+        <div class="ore-ui-card-header"><strong>Buttons</strong></div>
+        <div class="ore-ui-card-body">
+          <div class="demo-row">
+            <button class="ore-ui-btn">Default</button>
+            <button class="ore-ui-btn ore-ui-btn-primary">Primary</button>
+            <button class="ore-ui-btn ore-ui-btn-success">Success</button>
+            <button class="ore-ui-btn ore-ui-btn-danger">Danger</button>
+            <button class="ore-ui-btn ore-ui-btn-disabled" disabled>Disabled</button>
+          </div>
+          <div class="demo-row demo-spacer">
+            <button class="normal blue">Legacy Blue</button>
+            <button class="normal green">Legacy Green</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="ore-ui-card demo-card">
+        <div class="ore-ui-card-header"><strong>Inputs</strong></div>
+        <div class="ore-ui-card-body">
+          <div class="demo-row">
+            <div class="ore-ui-input-wrapper">
+              <input class="ore-ui-input" type="text" placeholder="ore-ui-input">
+            </div>
+            <input type="text" placeholder="legacy input">
+          </div>
+          <div class="demo-spacer">
+            <textarea class="ore-ui-input ore-ui-input-multiline" placeholder="Multiline input"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="ore-ui-card demo-card">
+        <div class="ore-ui-card-header"><strong>Cards</strong></div>
+        <div class="ore-ui-card-body">
+          <div class="ore-ui-card">
+            <div class="ore-ui-card-header">Card Header</div>
+            <div class="ore-ui-card-body">Card body content.</div>
+            <div class="ore-ui-card-footer">Card footer actions.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ore-ui-card demo-card">
+        <div class="ore-ui-card-header"><strong>Switch + Progress</strong></div>
+        <div class="ore-ui-card-body">
+          <label class="ore-ui-switch" tooltip="Toggle me">
+            <input id="demoSwitch" type="checkbox">
+            <span class="ore-ui-switch-slider"></span>
+          </label>
+
+          <div class="demo-spacer ore-ui-progress" aria-label="Demo progress">
+            <span id="demoProgress" class="ore-ui-progress-bar" style="width: 45%;"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="ore-ui-card demo-card">
+        <div class="ore-ui-card-header"><strong>Icons + Utilities</strong></div>
+        <div class="ore-ui-card-body">
+          <div class="demo-row">
+            <span class="-icon -menu"></span>
+            <span class="-icon -help"></span>
+            <span class="-icon -save"></span>
+            <span class="-icon -copy"></span>
+          </div>
+          <div class="ore-ui-banner demo-spacer">Banner / Utility Example</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const demoSwitch = document.getElementById('demoSwitch');
+    const demoProgress = document.getElementById('demoProgress');
+
+    demoSwitch.addEventListener('change', () => {
+      demoProgress.style.width = demoSwitch.checked ? '80%' : '45%';
+    });
+  </script>
+</body>
+</html>
